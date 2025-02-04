@@ -1,0 +1,21 @@
+assets - está pasta contém os arquivos imagem, gif, svg, e todos os tipos
+de arquivos usados no front-end
+
+components - está pasta contém pastas, com cada pasta contendo o arquivo de código
+respectivo de cada componente do front-end. Componentes são os elementos
+como botões, modais, barras, entre outros, que são re-utilizados em
+outras telas
+
+pages - está pasta contém os arquivos de código das telas do front-end.
+
+routes - está pasta contém os arquivos de código que aplicará as rotas das páginas
+as suas respectivas telas
+
+styles - está pasta contém os arquivos de estilização de cada componente/página do aplicativo
+
+utils - está pasta contém os arquivos de código utéis que serão re-utilizados continuamente
+no código do aplicativo. Coisas como validações, formatadores de dados como datas,
+entre outros, vão aqui
+
+app.js - este arquivo contém o código que essencialmente liga o front-end. Nele que você
+conectará as rotas e fará com que tudo funcione

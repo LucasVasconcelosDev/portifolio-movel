@@ -1,0 +1,5 @@
+public - pasta contendo coisas como o ícone do site, a versão de build dele, etc
+
+src - pasta onde todo o seu código ficará dentro
+
+package.json - arquivo com as bibliotecas e suas versões que serão usadas no código.
