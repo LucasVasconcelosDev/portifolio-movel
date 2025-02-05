@@ -13,6 +13,10 @@ as suas respectivas telas
 
 styles - está pasta contém os arquivos de estilização de cada componente/página do aplicativo
 
+services - está pasta contém os arquivos de código que farão funções lógicas no
+seu aplicativo. Coisas como requisições a API, criação de instâncias, manipulação do banco de dados,
+entre outros, vão aqui
+
 utils - está pasta contém os arquivos de código utéis que serão re-utilizados continuamente
 no código do aplicativo. Coisas como validações, formatadores de dados como datas,
 entre outros, vão aqui
