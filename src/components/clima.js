@@ -1,36 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { fetchWeather } from '../services';
+import React, { useEffect, useState } from "react";
+import { fetchClima } from "../services";
 
-const Clima = ({ cityId }) => {
-  const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Clima = ({ cidade }) => {
+    const [dadosClima, setDadosClima] = useState(null);
+    const [erro, setErro] = useState(null);
 
-  useEffect(() => {
-    const getWeather = async () => {
-      try {
-        const data = await fetchWeather(cityId);
-        setWeather(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
+    useEffect(() => {
+        const carregarClima = async () => {
+            try {
+                const data = await fetchClima(cidade);
+                setDadosClima(data);
+                console.log("resposta", data);
+            } catch (error) {
+                setErro("Erro ao carregar dados do clima.");
+            }
+        };
 
-    getWeather();
-  }, [cityId]);
+        carregarClima();
+    }, [cidade]);
 
-  if (loading) return <div>Carregando...</div>;
-  if (error) return <div>Erro: {error}</div>;
+    return (
+        <div style={styles.card}>
+            {erro && <p>{erro}</p>}
+            {dadosClima ? (
+                <>
+                    <h2>Clima em {dadosClima.cidade}</h2>
+                    <p>Temperatura: {dadosClima.temperatura}°C</p>
+                    <p>Descrição: {dadosClima.descricao}</p>
+                    <img src={dadosClima.icone} alt="Ícone do clima" />
+                </>
+            ) : (
+                <p>Carregando...</p>
+            )}
+        </div>
+    );
+};
 
-  return (
-    <div>
-      <h2>Previsão do Tempo para {weather.title}</h2>
-      <p>Temperatura: {weather.consolidated_weather[0].the_temp.toFixed(1)}°C</p>
-      <p>Condição: {weather.consolidated_weather[0].weather_state_name}</p>
-    </div>
-  );
+// Estilos simples para o card do clima
+const styles = {
+    card: {
+        border: "1px solid #ddd",
+        padding: "15px",
+        borderRadius: "8px",
+        width: "250px",
+        textAlign: "center",
+        backgroundColor: "#f9f9f9",
+        boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
+    },
 };
 
 export default Clima;

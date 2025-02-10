@@ -4,13 +4,13 @@ import Clima from "../components/clima";
 
 function Home() {
 
-    const saoPauloCityId = 455827;
+    const cidade = "São Paulo";
 
     return (
         <div>
             <h1>Portfólio Móvel</h1>
             <Relogio />
-            <Clima cityId={saoPauloCityId} />
+            <Clima cidade={cidade} />
         </div>
     );
 }
