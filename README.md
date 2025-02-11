@@ -21,9 +21,9 @@ Acesse a Prototipagem do Projeto no [Figma](https://www.figma.com/design/WCwdatT
 - [React](https://react.dev/) (Desenvolvimento Front-End)
 - [Node.js](https://nodejs.org/) (Desenvolvimento Back-end)
 - [Npm](https://www.npmjs.com/) (Gerenciador de pacotes)
-- [Figma](https://www.figma.com/pt-br/) (Site para prototipagem do Projeto)
-- [Vercel](https://vercel.com/) (Site para Hospedagem Front-end Gratuita)
-- [Render](https://render.com/) (Site para Hospedagem Back-end Gratuito)
+- [Figma](https://www.figma.com/pt-br/) (Prototipagem do Projeto)
+- [Vercel](https://vercel.com/) (Hospedagem Front-end Gratuita)
+- [Render](https://render.com/) (Hospedagem Back-end Gratuito)
 - [OpenWeatherMap](https://openweathermap.org/) (API Gratuita de meteorologia)
 
 ### 🤔 Como Testar Local?
