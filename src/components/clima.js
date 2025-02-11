@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchClima } from "../services";
+import { buscarClima } from "../services";
 
 const Clima = ({ cidade }) => {
     const [dadosClima, setDadosClima] = useState(null);
@@ -8,7 +8,7 @@ const Clima = ({ cidade }) => {
     useEffect(() => {
         const carregarClima = async () => {
             try {
-                const data = await fetchClima(cidade);
+                const data = await buscarClima(cidade);
                 setDadosClima(data);
                 console.log("resposta", data);
             } catch (error) {
@@ -36,7 +36,7 @@ const Clima = ({ cidade }) => {
     );
 };
 
-// Estilos simples para o card do clima
+
 const styles = {
     card: {
         border: "1px solid #ddd",

@@ -1,13 +1,11 @@
-const fetchClima = async (cidade) => {
+const API_URL = process.env.REACT_APP_API_URL;
+
+export const buscarClima = async (cidade) => {
     try {
-        const response = await fetch(`http://localhost:5000/clima?cidade=${cidade}`);
-        const data = await response.json();
-        console.log(data);
+        const response = await fetch(`${API_URL}/clima?cidade=${cidade}`);
+        return await response.json();
     } catch (error) {
         console.error("Erro ao buscar clima:", error);
+        return null;
     }
 };
-
-// fazer o .env quando hospedar o back-end
-
-fetchClima("São Paulo");
