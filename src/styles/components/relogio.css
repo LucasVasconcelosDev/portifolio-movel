@@ -1,0 +1,25 @@
+.relogio-container {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.hora {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #00809b; /* Azul semelhante ao da imagem */
+  line-height: 0.9;
+}
+
+.hora-grande {
+  display: block;
+}
+
+.data {
+  font-size: 15px;
+  color: black;
+  font-weight: 500;
+  margin-top: 10px;
+}

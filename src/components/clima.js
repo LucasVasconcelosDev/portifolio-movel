@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { buscarClima } from "../services";
+import "../styles/components/clima.css";
 
 const Clima = ({ cidade }) => {
     const [dadosClima, setDadosClima] = useState(null);
@@ -19,34 +20,28 @@ const Clima = ({ cidade }) => {
         carregarClima();
     }, [cidade]);
 
+    // Função para arredondar a temperatura
+    const arredondarTemperatura = (temp) => Math.round(temp);
+
     return (
-        <div style={styles.card}>
-            {erro && <p>{erro}</p>}
+        <div className="clima-card">
+            {erro && <p className="erro">{erro}</p>}
             {dadosClima ? (
                 <>
-                    <h2>Clima em {dadosClima.cidade}</h2>
-                    <p>Temperatura: {dadosClima.temperatura}°C</p>
-                    <p>Descrição: {dadosClima.descricao}</p>
-                    <img src={dadosClima.icone} alt="Ícone do clima" />
+                    <div className="clima-info">
+                        <img src={dadosClima.icone} alt="Ícone do clima" className="clima-icone" />
+                        <span className="clima-temperatura">
+                            {arredondarTemperatura(dadosClima.temperatura)}°
+                        </span>
+                    </div>
+                    <p className="clima-descricao">{dadosClima.descricao}</p>
+                    <p className="clima-cidade">{dadosClima.cidade}</p>
                 </>
             ) : (
-                <p>Carregando...</p>
+                <p className="carregando">Carregando...</p>
             )}
         </div>
     );
-};
-
-
-const styles = {
-    card: {
-        border: "1px solid #ddd",
-        padding: "15px",
-        borderRadius: "8px",
-        width: "250px",
-        textAlign: "center",
-        backgroundColor: "#f9f9f9",
-        boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
-    },
 };
 
 export default Clima;
