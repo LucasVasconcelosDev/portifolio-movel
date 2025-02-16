@@ -27,7 +27,7 @@ function Home() {
     return (
         <div className="home">
             {/* Container superior que agrupa o relógio e a previsão do tempo */}
-            <div className="info-container">
+            <div className="widget">
                 <Relogio />
                 <button
                     className="clima-button"
@@ -38,7 +38,7 @@ function Home() {
             </div>
 
             {/* Container dos botões de aplicativos */}
-            <div className="container">
+            <div className="app-container">
                 {apps.map((app, index) => (
                     <AppButton key={index} data={app} />
                 ))}
