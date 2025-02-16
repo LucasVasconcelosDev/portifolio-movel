@@ -1,0 +1,52 @@
+.clima-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Efeito fosco */
+    border-radius: 20px;
+    width: fit-content;
+    min-width: 180px;
+    color: #000;
+    text-align: center;
+}
+
+.clima-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clima-icone {
+    width: 50px;
+    height: 50px;
+}
+
+.clima-temperatura {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.clima-descricao {
+    font-size: 16px;
+    color: #444;
+}
+
+.clima-cidade {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.erro {
+    color: red;
+    font-size: 14px;
+}
+
+.carregando {
+    font-size: 14px;
+    color: #333;
+}

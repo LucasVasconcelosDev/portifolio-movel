@@ -1,0 +1,41 @@
+:root {
+    --bg-pos-x: 50%;
+    --bg-pos-y: 50%;
+}
+
+.home {
+    background: url("../../assets/Wallpaper.svg") no-repeat var(--bg-pos-x) var(--bg-pos-y) fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 60px;
+    transition: background-position 0.1s ease-out; /* Suaviza o movimento */
+}
+
+.widget {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+}
+
+.clima-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 20px; /* Espaçamento entre os botões */
+    margin-top: 20px; /* Espaçamento do topo */
+}
