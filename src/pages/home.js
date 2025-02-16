@@ -3,6 +3,7 @@ import Relogio from "../components/relogio";
 import Clima from "../components/clima";
 import AppButton from "../components/appButton";
 import apps from "../utils/apps";
+import WebModal from "../utils/webmodal";
 import "../styles/pages/home.css";
 
 function Home() {
@@ -31,7 +32,7 @@ function Home() {
                 <Relogio />
                 <button
                     className="clima-button"
-                    onClick={() => window.open("https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=-23.5640&lon=-46.8896&zoom=6", "_blank")}
+                    onClick={() => WebModal("https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=-23.5640&lon=-46.8896&zoom=6")}
                 >
                     <Clima cidade="São Paulo" />
                 </button>
