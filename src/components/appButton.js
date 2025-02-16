@@ -5,8 +5,8 @@ import "../styles/components/appButton.css";
 const AppButton = ({ data }) => {
     const { image, url, text } = data;
 
-    // Se o URL for um e-mail, cria um link mailto:
     const handleClick = () => {
+        // Se o URL for um e-mail (possuir @), cria um link mailto. Se não, chama o WebModal
         if (url.includes("@")) {
             window.location.href = `mailto:${url}`;
         } else {

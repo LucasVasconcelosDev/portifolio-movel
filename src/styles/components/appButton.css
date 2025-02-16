@@ -5,8 +5,8 @@
 }
 
 .app-button {
-    width: 100px; /* Define a largura do botão*/
-    height: 100px; /* Define a altura do botão */
+    width: 70px; /* Define a largura do botão*/
+    height: 70px; /* Define a altura do botão */
     border-radius: 20px;
     border: none;
     background-size: cover; /* Faz com que a imagem cubra todo o botão */
@@ -29,7 +29,6 @@
 .app-button-text {
     margin-top: 5px; /* Espaço entre o botão e o texto */
     font-size: 14px;
-    font-weight: bold;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Adiciona um contorno ao texto para melhor visibilidade */
 }

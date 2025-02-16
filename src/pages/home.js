@@ -8,24 +8,25 @@ import "../styles/pages/home.css";
 function Home() {
     useEffect(() => {
         const handleMouseMove = (event) => {
-            //aplica a animação de fundo da tela
-            const { clientX, clientY } = event;
-            const moveX = (clientX / window.innerWidth) * 10; // Movimenta até 10px
-            const moveY = (clientY / window.innerHeight) * 10;
+            const { clientX, clientY } = event; // Aplica a animação de fundo da tela com base no movimento do mouse
+            const moveX = (clientX / window.innerWidth) * 10; // Movimenta até 10px na horizontal
+            const moveY = (clientY / window.innerHeight) * 10; // Movimenta até 10px na vertical
             
+            // Atualiza as variáveis CSS para controlar a posição do fundo
             document.documentElement.style.setProperty("--bg-pos-x", `${50 + moveX}%`);
             document.documentElement.style.setProperty("--bg-pos-y", `${50 + moveY}%`);
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mousemove", handleMouseMove); // Adiciona o evento de movimento do mouse para animar o fundo
 
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mousemove", handleMouseMove); // Remove o evento ao desmontar o componente para evitar vazamento de memória
         };
     }, []);
 
     return (
         <div className="home">
+            {/* Container superior que agrupa o relógio e a previsão do tempo */}
             <div className="info-container">
                 <Relogio />
                 <button
@@ -35,6 +36,8 @@ function Home() {
                     <Clima cidade="São Paulo" />
                 </button>
             </div>
+
+            {/* Container dos botões de aplicativos */}
             <div className="container">
                 {apps.map((app, index) => (
                     <AppButton key={index} data={app} />

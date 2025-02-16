@@ -30,7 +30,7 @@
     background: rgba(255, 255, 255, 0.2);
     padding: 10px 20px;
     border-radius: 15px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(3px);
 }
 
 .clima-button {

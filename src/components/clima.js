@@ -3,25 +3,25 @@ import { buscarClima } from "../services";
 import "../styles/components/clima.css";
 
 const Clima = ({ cidade }) => {
-    const [dadosClima, setDadosClima] = useState(null);
-    const [erro, setErro] = useState(null);
+    const [dadosClima, setDadosClima] = useState(null); // Estado para armazenar os dados do clima da cidade fornecida
+    const [erro, setErro] = useState(null); // Estado para armazenar possíveis erros ao buscar os dados do clima
 
     useEffect(() => {
+        // Chamada da API buscaClima
         const carregarClima = async () => {
             try {
-                const data = await buscarClima(cidade);
-                setDadosClima(data);
+                const data = await buscarClima(cidade); // Chama a função buscarClima passando a cidade como parâmetro
+                setDadosClima(data); // Atualiza o estado com os dados recebidos da API
                 console.log("resposta", data);
             } catch (error) {
-                setErro("Erro ao carregar dados do clima.");
+                setErro("Erro ao carregar dados do clima."); // Atualiza o estado de erro caso ocorra um problema
             }
         };
 
         carregarClima();
-    }, [cidade]);
-
-    // Função para arredondar a temperatura
-    const arredondarTemperatura = (temp) => Math.round(temp);
+    }, [cidade]); // Dispara o efeito sempre que a propriedade 'cidade' for alterada
+    
+    const arredondarTemperatura = (temp) => Math.round(temp); // Função para arredondar a temperatura
 
     return (
         <div className="clima-card">
@@ -38,7 +38,7 @@ const Clima = ({ cidade }) => {
                     <p className="clima-cidade">{dadosClima.cidade}</p>
                 </>
             ) : (
-                <p className="carregando">Carregando...</p>
+                <p className="carregando">Buscando Clima ☁️🌡️...</p> // Exibe uma frase enquanto os dados do clima não são obtidos
             )}
         </div>
     );
