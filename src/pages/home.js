@@ -1,27 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Relogio from "../components/relogio";
 import Clima from "../components/clima";
 import AppButton from "../components/appButton";
 import apps from "../utils/apps";
 import WebModal from "../utils/webmodal";
+import { obterLocalizacao } from "../utils/localizacao";
 import "../styles/pages/home.css";
 
 function Home() {
+    const [coordenadas, setCoordenadas] = useState({ latitude: -23.5640, longitude: -46.8896 }); // Coordenadas para URL
+
+    // Atualiza a posição do fundo da tela ao mover o mouse
+    const handleMouseMove = (event) => {
+        const { clientX, clientY } = event;
+        const moveX = (clientX / window.innerWidth) * 10;
+        const moveY = (clientY / window.innerHeight) * 10;
+        document.documentElement.style.setProperty("--bg-pos-x", `${50 + moveX}%`);
+        document.documentElement.style.setProperty("--bg-pos-y", `${50 + moveY}%`);
+    };
+
+    // Obtém a localização do usuário e atualiza as coordenadas
+    const atualizarCoordenadas = async () => {
+        try {
+            const { latitude, longitude } = await obterLocalizacao();
+            setCoordenadas({ latitude, longitude });
+        } catch (error) {
+            console.log("Usando coordenadas padrão devido a erro na localização.");
+        }
+    };
+
     useEffect(() => {
-        const handleMouseMove = (event) => {
-            const { clientX, clientY } = event; // Aplica a animação de fundo da tela com base no movimento do mouse
-            const moveX = (clientX / window.innerWidth) * 10; // Movimenta até 10px na horizontal
-            const moveY = (clientY / window.innerHeight) * 10; // Movimenta até 10px na vertical
-            
-            // Atualiza as variáveis CSS para controlar a posição do fundo
-            document.documentElement.style.setProperty("--bg-pos-x", `${50 + moveX}%`);
-            document.documentElement.style.setProperty("--bg-pos-y", `${50 + moveY}%`);
-        };
-
-        window.addEventListener("mousemove", handleMouseMove); // Adiciona o evento de movimento do mouse para animar o fundo
-
+        window.addEventListener("mousemove", handleMouseMove); // Adiciona o evento de movimento do mouse
+        atualizarCoordenadas(); // Obtém as coordenadas ao montar o componente
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove); // Remove o evento ao desmontar o componente para evitar vazamento de memória
+            window.removeEventListener("mousemove", handleMouseMove); // Remove o evento ao desmontar o componente
         };
     }, []);
 
@@ -32,9 +44,9 @@ function Home() {
                 <Relogio />
                 <button
                     className="clima-button"
-                    onClick={() => WebModal("https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=-23.5640&lon=-46.8896&zoom=6")}
+                    onClick={() => WebModal(`https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=${coordenadas.latitude}&lon=${coordenadas.longitude}&zoom=6`)}
                 >
-                    <Clima cidade="São Paulo" />
+                    <Clima />
                 </button>
             </div>
 
